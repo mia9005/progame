@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Oswald", sans-serif;
+}
+
+:root {
+    --mainColor: #ff571f;
+    --whiteColor : #eee5e9 ; 
+    --blackColor : #33261d ; 
+    --grayColor : #433740 ; 
+}
+body a {
+    text-decoration: none;
+}
+
+@media ( min-width: 300px ) {
+    header {
+        background-color: var(--mainColor);
+        height: 20vh;
+        position: relative;
+    }
+    header > section {
+        display: flex;
+        padding: 3%;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+    header h1 {
+        color: var(--whiteColor);
+        letter-spacing: 3px;
+    }
+    summary {
+        font-size: 30px;
+        color: var(--whiteColor);
+    }
+    details {
+        position: absolute;
+        text-align: right;
+        width: 95%;
+    }
+    details > ul {
+        position: absolute;
+        width: 100%;
+        background-color: var(--whiteColor);
+    }
+    details li {
+        display: flex;
+        justify-content: center;
+        padding: 3%;
+    }
+    details a {
+        color: var(--blackColor);
+        font-size: 22px;
+    }
+    details a:hover{
+        color: var(--mainColor);
+    }
+    nav {
+        display: none;
+    }
+    header > section > a {
+        display: none;
+    }
+    main {
+        background-color: var(--blackColor);
+        height: 10vh;/*check*/
+    }
+    footer {
+        background-color: var(--mainColor);
+        color: var(--whiteColor);
+        padding: 5%;
+        display: flex;
+        justify-content: center;
+        letter-spacing: 1px;
+    }
+    footer a {
+        color: var(--blackColor);
+    }
+}
+@media ( min-width: 700px ) {
+    details {
+        display: none;
+    }
+   nav {
+    display: flex;
+    background-color: var(--grayColor);
+    justify-content: center;
+    height: 8vh;
+   } 
+   nav > ul {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+   }
+   nav li {
+    display: flex;
+   }
+   nav a {
+    font-size: 20px;
+    color: var(--whiteColor);
+   }
+   nav a:hover{
+    color: var(--mainColor);
+   }
+   header > section > a {
+    display: block;
+    background-color: var(--grayColor);
+    width: 10vw;
+    text-align: center;
+    padding: 1%;
+    font-size: 20px;
+    border-radius: 1vw;
+    color: var(--whiteColor);
+    letter-spacing: 2px;
+   }
+   footer {
+    font-size: 20px;
+   }
+}
