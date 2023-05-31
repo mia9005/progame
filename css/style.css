@@ -126,6 +126,8 @@ img {
         font-weight: 600;
         color: var(--whiteColor);
         letter-spacing: 1px;
+        border: 1px solid var(--grayColor);
+        border-radius: 5px;
     }
 
     .form-300 select{

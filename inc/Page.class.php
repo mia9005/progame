@@ -172,7 +172,7 @@ class Page{
                     <option value="price">Price</option>
                     <option value="id">Id</option>
                 </select>
-                <button type="submit">Sort</button>
+                <input type="submit" value="Sort"/>
             </form>                     
         </article>
         <article class="catalog">
