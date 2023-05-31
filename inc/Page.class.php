@@ -92,8 +92,80 @@ class Page{
 
     public static function storeFilter(){
         $htmlStoreFilter = '
-        <article>
-            <form action="" method="GET">
+        <aside>
+            <details>
+                <summary class="fa-solid fa-filter"></summary>
+                <form method="GET" action="'.$_SERVER["PHP_SELF"].'" class="form-300">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name"/>
+                    <label for="price">Price</label>
+                    <input type="number" name="price" id="price"/>
+                    <label for="releaseDate">Release Date</label>
+                    <input type="date" name="releaseDate" id="releaseDate"/>
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option>Opt1</option>
+                        <option>Opt2</option>
+                        <option>Opt3</option>
+                    </select>
+                    <label for="esbr">ESBR</label>
+                    <input type="number" name="esbr" id="esbr"/>
+                    <label for="maxPlayers">Max Players</label>
+                    <input type="number" name="maxPlayers" id="maxPlayers"/>
+                    <label for="brand">Brand</label>
+                    <select name="brand" id="brand">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option>Opt1</option>
+                        <option>Opt2</option>
+                        <option>Opt3</option>
+                    </select>
+                    <label for="complexity">Complexity</label>
+                    <input type="number" name="complexity" id="complexity"/>
+                    <input type="submit" name="submit" value="filter"/>
+                </form>
+            </details>
+            <h2>FILTER</h2>
+            <form method="GET" action="'.$_SERVER["PHP_SELF"].'" class="form-700">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name"/>
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price"/>
+                <label for="releaseDate">Release Date</label>
+                <input type="date" name="releaseDate" id="releaseDate"/>
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <option selected disabled>-->SELECT<--</option>
+                    <option>Opt1</option>
+                    <option>Opt2</option>
+                    <option>Opt3</option>
+                </select>
+                <label for="esbr">ESBR</label>
+                <input type="number" name="esbr" id="esbr"/>
+                <label for="maxPlayers">Max Players</label>
+                <input type="number" name="maxPlayers" id="maxPlayers"/>
+                <label for="brand">Brand</label>
+                <select name="brand" id="brand">
+                    <option selected disabled>-->SELECT<--</option>
+                    <option>Opt1</option>
+                    <option>Opt2</option>
+                    <option>Opt3</option>
+                </select>
+                <label for="complexity">Complexity</label>
+                <input type="number" name="complexity" id="complexity"/>
+                <input type="submit" name="submit" value="filter"/>
+            </form>
+        </aside>
+        ';
+
+        return $htmlStoreFilter;
+    }
+
+    public static function storeCatalog( $productList ){
+
+        $htmlStoreCatalog = '<section>
+        <article class="sort">
+            <form action="'.$_SERVER["PHP_SELF"].'" method="GET">
                 <select name="sortBy">
                     <option selected disabled>-->Select Option<--</option>
                     <option value="name">Name</option>
@@ -102,14 +174,9 @@ class Page{
                 </select>
                 <button type="submit">Sort</button>
             </form>                     
-        </article>';
-
-        return $htmlStoreFilter;
-    }
-
-    public static function storeCatalog( $productList ){
-
-        $htmlStoreCatalog = '<section>';
+        </article>
+        <article class="catalog">
+        ';
 
         foreach($productList as $product){
             $htmlStoreCatalog .='
@@ -122,9 +189,13 @@ class Page{
                     <button>Add to the cart <i class="fa-solid fa-cart-shopping"></i></button>
                 </figcaption>
             </figure>
-            <a/>';
+            </a>';
         }
-        $htmlStoreCatalog .= '<section/>';
+
+        $htmlStoreCatalog .= '
+                </article>
+            <section/>
+        ';
 
         return $htmlStoreCatalog;
     }
