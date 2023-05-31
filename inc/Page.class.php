@@ -73,4 +73,84 @@ class Page{
         ';
         return $htmlMain;
     }
+
+    /**
+     * store gallery function printer
+     * @return string
+     */
+    public static function PageStoreCatalog( $productList ) : string {
+
+        $htmlStoreCatalog = '<div class="store-gallery">';
+
+        $htmlStoreCatalog .= self::storeFilter();
+        $htmlStoreCatalog .= self::storeCatalog($productList);
+            
+        $htmlStoreCatalog .='</div>';
+
+        return $htmlStoreCatalog;
+    }
+
+    public static function storeFilter(){
+        $htmlStoreFilter = '
+        <article>
+            <form action="" method="GET">
+                <select name="sortBy">
+                    <option selected disabled>-->Select Option<--</option>
+                    <option value="name">Name</option>
+                    <option value="price">Price</option>
+                    <option value="id">Id</option>
+                </select>
+                <button type="submit">Sort</button>
+            </form>                     
+        </article>';
+
+        return $htmlStoreFilter;
+    }
+
+    public static function storeCatalog( $productList ){
+
+        $htmlStoreCatalog = '<section>';
+
+        foreach($productList as $product){
+            $htmlStoreCatalog .='
+            <a href="?product='.$product->name.'">
+            <figure>
+                <img src='.$product->img.' alt='.$product->alt.'>
+                <figcaption>
+                    <h3>'.$product->name.'</h3>
+                    <span>$'.$product->price.'</span>
+                    <button>Add to the cart <i class="fa-solid fa-cart-shopping"></i></button>
+                </figcaption>
+            </figure>
+            <a/>';
+        }
+        $htmlStoreCatalog .= '<section/>';
+
+        return $htmlStoreCatalog;
+    }
+
+    /**
+     * store product function printer
+     * @return string
+     */
+    public static function PageProduct( $product ) : string {
+        $row = "";
+        $htmlStoreProduct = '
+        <div class="store-product">
+            <section>
+                <figure>
+                    <img src='.$product->img.' alt='.$product->alt.' >
+                </figure>
+                <article>
+                    <h2>'.$product->name.'</h2>
+                    <p>product description Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, nisi.</p>
+                    <span>$'.$product->price.'</span>
+                    <button>Add to the cart <i class="fa-solid fa-cart-shopping"></i></button>
+                </article>
+            </section>
+        </div>
+        ';
+
+        return $htmlStoreProduct;
+    }
 }
