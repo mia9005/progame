@@ -99,7 +99,13 @@ class Page{
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name"/>
                     <label for="price">Price</label>
-                    <input type="number" name="price" id="price"/>
+                    <select name="price" id="price">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="0_100">$0 - $100</option>
+                        <option value="101_200">$101 - $200</option>
+                        <option value="201_300">$201 - $300</option>
+                        <option value="301_400">$301 - $400</option>
+                    </select>
                     <label for="releaseDate">Release Date</label>
                     <input type="date" name="releaseDate" id="releaseDate"/>
                     <label for="category">Category</label>
@@ -110,9 +116,24 @@ class Page{
                         <option>Opt3</option>
                     </select>
                     <label for="esbr">ESBR</label>
-                    <input type="number" name="esbr" id="esbr"/>
+                    <select name="esbr" id="esbr">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="1">Early Childhood</option>
+                        <option value="2">Everyone</option>
+                        <option value="3">Everyone 10+ Childhood</option>
+                        <option value="4">Teen</option>
+                        <option value="5">Mature 17+</option>
+                        <option value="6">Adults Only 18+</option>
+                        <option value="7">Ratin Pending</option>
+                    </select>
                     <label for="maxPlayers">Max Players</label>
-                    <input type="number" name="maxPlayers" id="maxPlayers"/>
+                    <select name="maxPlayers" id="maxPlayers">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="1">1 player</option>
+                        <option value="2">2 player</option>
+                        <option value="3">3 player</option>
+                        <option value="4+">4+ player</option>
+                    </select>
                     <label for="brand">Brand</label>
                     <select name="brand" id="brand">
                         <option selected disabled>-->SELECT<--</option>
@@ -121,40 +142,73 @@ class Page{
                         <option>Opt3</option>
                     </select>
                     <label for="complexity">Complexity</label>
-                    <input type="number" name="complexity" id="complexity"/>
+                    <select name="complexity" id="complexity">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
                     <input type="submit" name="submit" value="filter"/>
+                    <input type="hidden" name="catalog_filter" value="catalog_filter"/>
                 </form>
             </details>
             <h2>FILTER</h2>
             <form method="GET" action="'.$_SERVER["PHP_SELF"].'" class="form-700">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name"/>
-                <label for="price">Price</label>
-                <input type="number" name="price" id="price"/>
-                <label for="releaseDate">Release Date</label>
-                <input type="date" name="releaseDate" id="releaseDate"/>
-                <label for="category">Category</label>
-                <select name="category" id="category">
-                    <option selected disabled>-->SELECT<--</option>
-                    <option>Opt1</option>
-                    <option>Opt2</option>
-                    <option>Opt3</option>
-                </select>
-                <label for="esbr">ESBR</label>
-                <input type="number" name="esbr" id="esbr"/>
-                <label for="maxPlayers">Max Players</label>
-                <input type="number" name="maxPlayers" id="maxPlayers"/>
-                <label for="brand">Brand</label>
-                <select name="brand" id="brand">
-                    <option selected disabled>-->SELECT<--</option>
-                    <option>Opt1</option>
-                    <option>Opt2</option>
-                    <option>Opt3</option>
-                </select>
-                <label for="complexity">Complexity</label>
-                <input type="number" name="complexity" id="complexity"/>
-                <input type="submit" name="submit" value="filter"/>
-            </form>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name"/>
+                    <label for="price">Price</label>
+                    <select name="price" id="price">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="0_100">$0 - $100</option>
+                        <option value="101_200">$101 - $200</option>
+                        <option value="201_300">$201 - $300</option>
+                        <option value="301_400">$301 - $400</option>
+                    </select>
+                    <label for="releaseDate">Release Date</label>
+                    <input type="date" name="releaseDate" id="releaseDate"/>
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option>Opt1</option>
+                        <option>Opt2</option>
+                        <option>Opt3</option>
+                    </select>
+                    <label for="esbr">ESBR</label>
+                    <select name="esbr" id="esbr">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="1">Early Childhood</option>
+                        <option value="2">Everyone</option>
+                        <option value="3">Everyone 10+ Childhood</option>
+                        <option value="4">Teen</option>
+                        <option value="5">Mature 17+</option>
+                        <option value="6">Adults Only 18+</option>
+                        <option value="7">Ratin Pending</option>
+                    </select>
+                    <label for="maxPlayers">Max Players</label>
+                    <select name="maxPlayers" id="maxPlayers">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="1">1 player</option>
+                        <option value="2">2 player</option>
+                        <option value="3">3 player</option>
+                        <option value="4+">4+ player</option>
+                    </select>
+                    <label for="brand">Brand</label>
+                    <select name="brand" id="brand">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option>Opt1</option>
+                        <option>Opt2</option>
+                        <option>Opt3</option>
+                    </select>
+                    <label for="complexity">Complexity</label>
+                    <select name="complexity" id="complexity">
+                        <option selected disabled>-->SELECT<--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <input type="submit" name="submit" value="filter"/>
+                    <input type="hidden" name="catalog_filter" value="catalog_filter"/>
+                </form>
         </aside>
         ';
 
