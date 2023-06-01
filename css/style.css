@@ -151,6 +151,10 @@ img {
         display: flex;
         width: 100%;
     }
+    
+    .sort form {
+        z-index: 99;
+    }
 
     .sort {
         padding: 0 5vh;
