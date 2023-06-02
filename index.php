@@ -1,8 +1,11 @@
 <?php
-require_once("inc/entities/Test.class.php");
+require_once("inc/config.inc.php");
+require_once("inc/entities/Game.class.php");
 require_once("inc/entities/GameRepositoryclass.php");
-require_once("inc/FileManager.class.php");
-require_once("inc/Page.class.php");
+require_once("inc/entities/Test.class.php");
+require_once("inc/Utilities/FileManager.class.php");
+require_once("inc/Utilities/PDOService.class.php");
+require_once("inc/Utilities/Page.class.php");
 
 $result = readCustonFile("./data/test_gallery.csv");
 $list = toArray($result);
