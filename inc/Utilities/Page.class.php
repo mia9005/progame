@@ -10,9 +10,8 @@ class Page{
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="./css/style.css">
+            <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
             <title>PROGAME</title>
         </head>
@@ -23,6 +22,7 @@ class Page{
 
     public static function PageEnd() : string {
         $htmlEnd = '
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
             </body>
         </html>
         ';
@@ -72,5 +72,33 @@ class Page{
         </main>
         ';
         return $htmlMain;
+    }
+    public static function loginForm() {
+        $loginForm='
+        <section class="login-page">
+            <form>
+                <aside> 
+                    <div class="row mb-3">
+                        <label for="signUser" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="signUser" id="signUser">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="signPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                        <input type="password" class="form-control" name="signPassword" id="signPassword">
+                        </div>
+                    </div>
+                </aside>
+                <input type="submit" id="login-page-submit" value="Sign in" class="btn btn-primary">            
+            </form>
+            <aside>
+                <p>Do you want to create an account?</p>
+                <a href="#">CREATE ACCOUNT</a>
+            </aside>
+        </section>
+        ';
+        return $loginForm;   
     }
 }

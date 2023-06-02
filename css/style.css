@@ -82,6 +82,49 @@ body a {
         height: 10vh;
         /*check*/
     }
+    .login-page {
+        background-color: var(--blackColor);
+        color: var(--whiteColor);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 3vh;
+        padding-top:10%;
+        padding-bottom: 10%;
+    }
+    .login-page > form {
+        background-color: var(--grayColor);
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 3vh;
+        padding: 5%;
+    }
+    .login-page > form > aside{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5vh;
+    }
+    #login-page-submit {
+        background-color: var(--mainColor);
+        border: 0px none transparent;
+        width: 40%;
+    }
+    #login-page-submit:hover{
+        background-color: var(--blackColor);
+    }
+    .login-page > aside{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 15px;
+    }
+    .login-page > aside > a {
+        color: var(--whiteColor);
+        text-decoration: underline;
+    }
 
     footer {
         background-color: var(--mainColor);
@@ -146,5 +189,21 @@ body a {
 
     footer {
         font-size: 20px;
+    }
+    .login-page {
+        padding-top:8vh;
+        padding-bottom:8vh;
+        row-gap: 5vh;
+    }
+    .login-page > form{
+        width: 50%;
+        padding: 3%;
+    }
+
+}
+@media (min-width: 1200px) {
+    .login-page > form{
+        width: 40%;
+        padding: 3%;
     }
 }
