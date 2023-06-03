@@ -27,9 +27,9 @@
         private string $esbr;
 
         /**
-         * @var integer max player
+         * @var string max player
          */
-        private int $maxPlayer;
+        private string $maxPlayer;
 
         /**
          * @var string number of rates
@@ -106,9 +106,9 @@
         }
 
         /**
-         * @return integer
+         * @return string
          */
-        public function getMaxPlayer() : int {
+        public function getMaxPlayer() : string {
             return $this->maxPlayer;
         }
 
