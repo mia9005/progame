@@ -100,7 +100,7 @@ class Page{
                     <input type="text" name="name" id="name"/>
                     <label for="price">Price</label>
                     <select name="price" id="price">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option value="0_100">$0 - $100</option>
                         <option value="101_200">$101 - $200</option>
                         <option value="201_300">$201 - $300</option>
@@ -110,14 +110,14 @@ class Page{
                     <input type="date" name="releaseDate" id="releaseDate"/>
                     <label for="category">Category</label>
                     <select name="category" id="category">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">ALL</option>
                         <option>Opt1</option>
                         <option>Opt2</option>
                         <option>Opt3</option>
                     </select>
                     <label for="esbr">ESBR</label>
                     <select name="esbr" id="esbr">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option value="1">Early Childhood</option>
                         <option value="2">Everyone</option>
                         <option value="3">Everyone 10+ Childhood</option>
@@ -128,7 +128,7 @@ class Page{
                     </select>
                     <label for="maxPlayers">Max Players</label>
                     <select name="maxPlayers" id="maxPlayers">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option value="1">1 player</option>
                         <option value="2">2 player</option>
                         <option value="3">3 player</option>
@@ -136,17 +136,17 @@ class Page{
                     </select>
                     <label for="brand">Brand</label>
                     <select name="brand" id="brand">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option>Opt1</option>
                         <option>Opt2</option>
                         <option>Opt3</option>
                     </select>
                     <label for="complexity">Complexity</label>
                     <select name="complexity" id="complexity">
-                        <option selected disabled>-->SELECT<--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option selected value="all">All</option>   
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
                     </select>
                     <input type="submit" name="submit" value="filter"/>
                     <input type="hidden" name="catalog_filter" value="catalog_filter"/>
@@ -158,7 +158,7 @@ class Page{
                     <input type="text" name="name" id="name"/>
                     <label for="price">Price</label>
                     <select name="price" id="price">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option value="0_100">$0 - $100</option>
                         <option value="101_200">$101 - $200</option>
                         <option value="201_300">$201 - $300</option>
@@ -168,14 +168,14 @@ class Page{
                     <input type="date" name="releaseDate" id="releaseDate"/>
                     <label for="category">Category</label>
                     <select name="category" id="category">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">ALL</option>
                         <option>Opt1</option>
                         <option>Opt2</option>
                         <option>Opt3</option>
                     </select>
                     <label for="esbr">ESBR</label>
                     <select name="esbr" id="esbr">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option value="1">Early Childhood</option>
                         <option value="2">Everyone</option>
                         <option value="3">Everyone 10+ Childhood</option>
@@ -186,7 +186,7 @@ class Page{
                     </select>
                     <label for="maxPlayers">Max Players</label>
                     <select name="maxPlayers" id="maxPlayers">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option value="1">1 player</option>
                         <option value="2">2 player</option>
                         <option value="3">3 player</option>
@@ -194,17 +194,17 @@ class Page{
                     </select>
                     <label for="brand">Brand</label>
                     <select name="brand" id="brand">
-                        <option selected disabled>-->SELECT<--</option>
+                        <option selected value="all">All</option>
                         <option>Opt1</option>
                         <option>Opt2</option>
                         <option>Opt3</option>
                     </select>
                     <label for="complexity">Complexity</label>
                     <select name="complexity" id="complexity">
-                        <option selected disabled>-->SELECT<--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option selected value="all">All</option>   
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
                     </select>
                     <input type="submit" name="submit" value="filter"/>
                     <input type="hidden" name="catalog_filter" value="catalog_filter"/>
@@ -233,13 +233,15 @@ class Page{
         ';
 
         foreach($productList as $product){
+            $id = $product->getGameId();
+            $imgs = ImgDAO::getImagesById($id);
             $htmlStoreCatalog .='
-            <a href="?product='.$product->name.'">
+            <a href="?product='.$product->getGameName().'">
             <figure>
-                <img src='.$product->img.' alt='.$product->alt.'>
+                <img src='.$imgs[0]->getImgLink().' alt='.$product->getGameName().'>
                 <figcaption>
-                    <h3>'.$product->name.'</h3>
-                    <span>$'.$product->price.'</span>
+                    <h3>'.$product->getGameName().'</h3>
+                    <span>$'.$product->getPrice().'</span>
                     <button>Add to the cart <i class="fa-solid fa-cart-shopping"></i></button>
                 </figcaption>
             </figure>
@@ -259,17 +261,19 @@ class Page{
      * @return string
      */
     public static function PageProduct( $product ) : string {
+        $id = $product->getGameId();
+        $imgs = ImgDAO::getImagesById($id);
         $row = "";
         $htmlStoreProduct = '
         <div class="store-product">
             <section>
                 <figure>
-                    <img src='.$product->img.' alt='.$product->alt.' >
+                    <img src='.$imgs[0]->getImgLink().' alt='.$product->getGameName().' >
                 </figure>
                 <article>
-                    <h2>'.$product->name.'</h2>
+                    <h2>'.$product->getGameName().'</h2>
                     <p>product description Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, nisi.</p>
-                    <span>$'.$product->price.'</span>
+                    <span>$'.$product->getPrice().'</span>
                     <button>Add to the cart <i class="fa-solid fa-cart-shopping"></i></button>
                 </article>
             </section>

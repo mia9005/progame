@@ -4,12 +4,12 @@
         /**
          * @var integer id
          */
-        private int $id;
+        private int $gameId;
 
         /**
          * @var string name
          */
-        private string $name;
+        private string $gameName;
 
         /**
          * @var float price
@@ -17,19 +17,14 @@
         private float $price;
 
         /**
-         * @var integer year published
+         * @var string year published
          */
-        private int $year;
-        
-        /**
-         * @var string category
-         */
-        private int $category;
+        private string $releaseDate;
 
         /**
-         * @var integer minimun age
+         * @var string minimun age
          */
-        private int $esbr;
+        private string $esbr;
 
         /**
          * @var integer max player
@@ -42,67 +37,65 @@
         private string $brand;
 
         /**
-         * @var integer complexity
+         * @var string complexity
          */
-        private int $complexity;
+        private string $complexity;
 
-        /**
-         * game constructor
-         *
-         * @param integer $id
-         * @param string $name
-         * @param float $price
-         * @param integer $year
-         * @param string $category
-         * @param integer $esbr
-         * @param integer $maxPlayer
-         * @param string $brand
-         * @param int $complexity
-         */
-        public function __construct(
+        // /**
+        //  * game constructor
+        //  *
+        //  * @param integer $gameId
+        //  * @param string $gameName
+        //  * @param float $price
+        //  * @param string $releaseDate
+        //  * @param string $esbr
+        //  * @param integer $maxPlayer
+        //  * @param string $brand
+        //  * @param string $complexity
+        //  */
+        // public function __construct(
 
-            int $id,
-            string $name,
-            float $price, 
-            int $year,
-            string $category, 
-            int $esbr, 
-            int $maxPlayer, 
-            int $brand,
-            int $complexity,
-        ){
-            $this->id = $id;
-            $this->name = $name;
-            $this->price = $price;
-            $this->year = $year;
-            $this->category = $category;
-            $this->esbr = $esbr;
-            $this->maxPlayer = $maxPlayer;
-            $this->brand = $brand;
-            $this->complexity = $complexity;
-        }
+        //     int $gameId,
+        //     string $gameName,
+        //     float $price, 
+        //     string $releaseDate,
+        //     string $esbr, 
+        //     int $maxPlayer, 
+        //     string $brand,
+        //     string $complexity,
+
+        // ){
+        //     $this->gameId = $gameId;
+        //     $this->gameName = $gameName;
+        //     $this->price = $price;
+        //     $this->releaseDate = $releaseDate;
+        //     $this->esbr = $esbr;
+        //     $this->maxPlayer = $maxPlayer;
+        //     $this->brand = $brand;
+        //     $this->complexity = $complexity;
+        // }
 
         // Get functions
         /**
          * @return integer
          */
-        public function getId() : int {
-            return $this->id;
+        public function getGameId() : int {
+            return $this->gameId;
         }
 
         /**
          * @return string
          */
-        public function getName() : string {
-            return $this->name;
+        public function getGameName() : string {
+            return $this->gameName;
         }
 
         /**
          *
-         * @return integer
+         * @return string
          */
-        public function getYear() : int {
-            return $this->year;
+        public function getReleaseDate() : string {
+            return $this->releaseDate;
         }
 
         /**
@@ -122,14 +115,7 @@
         /**
          * @return string
          */
-        public function getCategory() : string {
-            return $this->category;
-        }
-
-        /**
-         * @return integer
-         */
-        public function getEsbr() : int{
+        public function getEsbr() : string{
             return $this->esbr;
         }
 
@@ -141,9 +127,9 @@
         }
 
         /**
-         * @return float
+         * @return string
          */
-        public function getComplexity() : float{
+        public function getComplexity() : string{
             return $this->complexity;
         }
 
@@ -152,16 +138,16 @@
          * @param string $name
          * @return void
          */
-        public function setName( string $name ) : void  {
-            $this->name = $name ;
+        public function setGameName( string $name ) : void  {
+            $this->gameName = $name ;
         }
         
         /**
-         * @param integer $year
+         * @param string $year
          * @return void
          */
-        public function setYear( int $year ) : void  {
-            $this->year = $year ;
+        public function setReleaseDate( string $year ) : void  {
+            $this->releaseDate = $year ;
         }
         
         /**
@@ -181,10 +167,10 @@
         }
         
         /**
-         * @param integer $esbr
+         * @param string $esbr
          * @return void
          */
-        public function setEsbr( int $esbr ) : void  {
+        public function setEsbr( string $esbr ) : void  {
             $this->esbr = $esbr ;
         }
         
@@ -197,18 +183,10 @@
         }
         
         /**
-         * @param string $rateNum
+         * @param string $complexity
          * @return void
          */
-        public function setCategory( string $category ) : void  {
-            $this->category = $category ;
-        }
-        
-        /**
-         * @param float $complexity
-         * @return void
-         */
-        public function setComplexity( float $complexity ) : void {
+        public function setComplexity( string $complexity ) : void {
             $this->complexity = $complexity ;
         }
 

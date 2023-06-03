@@ -20,16 +20,20 @@ class GameRepository {
         return count($this->gameList);
     }
 
+    public function getGameByName( string $name ) : Game {
+        return $this->gameList[$name];
+    }
+
     public static function sortById($game1, $game2){
-        return $game1->id <=> $game2->id;
+        return $game1->getGameId() <=> $game2->getGameId();
     }
 
     public static function sortByName($game1, $game2){
-        return $game1->name <=> $game2->name;
+        return $game1->getGameName() <=> $game2->getGameName();
     }
 
     public static function sortByPrice($game1, $game2){
-        return $game1->price <=> $game2->price;
+        return $game1->getPrice() <=> $game2->getPrice();
     }
 
     public function sortGame( string $sortBy ) {
