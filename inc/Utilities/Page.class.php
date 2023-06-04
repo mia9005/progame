@@ -264,6 +264,7 @@ class Page{
     public static function PageProduct( $product ) : string {
         $id = $product->getGameId();
         $imgs = ImgDAO::getImagesById($id);
+        $category = CategoryDAO::getCategoryById($id);
         $row = "";
         $htmlStoreProduct = '
         <div class="store-product">
@@ -304,7 +305,12 @@ class Page{
                 </div>
                 <article>
                     <h2>'.$product->getGameName().'</h2>
-                    <p>product description Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, nisi.</p>
+                    <h5>';
+                    for($i = 0; $i<count($category);$i++){
+
+                        $htmlStoreProduct .= ' - '. $category[$i]->getCategory();
+                    }
+                    $htmlStoreProduct.='</h5>
                     <ul>
                         <li>Release Date: '.$product->getReleaseDate().'</li>
                         <li>ESBR: '.$product->getEsbr().'</li>

@@ -247,6 +247,10 @@ img {
     .store-product ul {
         width: 100%;
     }
+
+    .store-product h5 {
+        width: 100%;
+    }
     
     .store-product li {
         font-size: 18px;
