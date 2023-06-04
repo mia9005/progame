@@ -76,7 +76,7 @@ class Page{
     public static function loginForm() {
         $loginForm='
         <section class="login-page">
-            <form action="'.$_SERVER["PHP_SELF"].'" mothod="POST">
+            <form action="'.$_SERVER["PHP_SELF"].'" method="POST">
                 <aside> 
                     <div class="row mb-3">
                         <label for="loginUser" class="col-sm-2 col-form-label">Username</label>
