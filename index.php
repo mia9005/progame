@@ -14,22 +14,29 @@ require_once("inc/Utilities/Page.class.php");
 GameDAO::startDb();
 ImgDAO::startDb();
 
-$result = GameDAO::selectAllProducts();
-$gameList = [];
-
+$result =[];
 // $list = toArray($result);
+if( !empty($_POST)){
+    if(!empty($_POST['catalog_filter']))
+    $result = GameDAO::filterProducts($_POST);
+    // var_dump($result);
+    
+}else{
+    $result = GameDAO::selectAllProducts();
+}
+
+$gameList = [];
 foreach($result as $game){
     $gameList[$game->getGameName()] = $game;
-    
 }
 // var_dump($gameList);
 $games = new GameRepository();
 $games->setGameList($gameList);
 $img = ImgDAO::getAllImages();
-// var_dump($games->getGameList()[0]->getGameId());
 
 echo Page::PageHead();
 echo Page::PageHeader();
+
 if( !empty($_GET) ){
     if(!empty($_GET['sortBy'])){
         $games->sortGame($_GET['sortBy']);
@@ -40,5 +47,7 @@ if( !empty($_GET) ){
 }else{
     echo Page::PageStoreCatalog($games->getGameList());
 }
+
+
 echo Page::PageFooter();
 echo Page::PageEnd();

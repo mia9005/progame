@@ -153,7 +153,7 @@ class Page{
                 </form>
             </details>
             <h2>FILTER</h2>
-            <form method="GET" action="'.$_SERVER["PHP_SELF"].'" class="form-700">
+            <form method="POST" action="'.$_SERVER["PHP_SELF"].'" class="form-700">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name"/>
                     <label for="price">Price</label>
@@ -163,6 +163,7 @@ class Page{
                         <option value="101_200">$101 - $200</option>
                         <option value="201_300">$201 - $300</option>
                         <option value="301_400">$301 - $400</option>
+                        <option value="401_500">$401 - $500</option>
                     </select>
                     <label for="releaseDate">Release Date</label>
                     <input type="date" name="releaseDate" id="releaseDate"/>
