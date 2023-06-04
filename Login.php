@@ -6,19 +6,23 @@ require_once("inc/Utilities/DAO/CustomerDAO.class.php");
 require_once("inc/Utilities/Page.class.php");
 require_once("inc/Utilities/LoginManager.class.php");
 
+if(!empty($_POST)) {
+    CustomerDAO::$startDb();
 
-if(!empty($_POST)){
-    CustomerDAO::init();
-    $username = $_POST['signUsername'];
-    $getInfo = CustomerDAO::getCustomerByUsername($username);
+    $userName = $_POST["loginUser"];
+    $password = $_POST["loginPassword"];
 
-    if((gettype($getInfo) == "object") && (get_class($getInfo) == "Customer")) {
-        if($getInfo->validateCustomer($_POST['signPassword'])) {
+    $userExist = CustomerDAO::getCustomerByUsername($userName);
+
+    if((gettype($userExist) === "object") && (get_class($userExist) === 'Customer')) {
+        if($userExist->validateCustomer($password)) {
             session_start();
-            $_SESSION["logged"] = true;
-            $_SESSION['signUsername'] = $getInfo;
 
-            header("Location: updateaccount.php");
+            $_SESSION["logged"] = true;
+            $_SESSION["loginUser"] = $userExist;
+
+            echo "Login Success";
+            // header("Location: profile.html");
             exit();
         }
     }

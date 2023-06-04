@@ -7,7 +7,6 @@ class Customer {
     private string $username;
     private string $email;
     private string $password;
-    private string $picture;
 
     public function getId(){
         return $this->id;
@@ -44,12 +43,6 @@ class Customer {
     }
     public function setPassword(string $password){
         $this->password = $password;
-    }
-    public function getPicture(){
-        return $this->picture;
-    }
-    public function setPicture(string $picture){
-        $this->picture = $picture;
     }
 
     public function validateCustomer(string $userPass) : bool {
