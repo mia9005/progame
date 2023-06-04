@@ -26,5 +26,19 @@ class CustomerDAO {
         self::$db->execute();
 
         return self::$db->singleResult();
-    }    
+    }
+    public static function insertCustomer(Customer $newCustomer){
+        $sql = "INSERT INTO customers(fName,lName,username,email,password) VALUES(:fName,:lName,:user,:email,:password)";
+
+        self::$db->query($sql);
+ 
+        self::$db->bind(":fName",$newCustomer->getFName());
+        self::$db->bind(":lName",$newCustomer->getLName());
+        self::$db->bind(":user",$newCustomer->getUsername());
+        self::$db->bind(":email",$newCustomer->getEmail());
+        self::$db->bind(":password",$newCustomer->getPassword());
+
+        self::$db->execute();
+        return self::$db->lastInsertedId();
+    }
 }

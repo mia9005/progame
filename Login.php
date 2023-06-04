@@ -7,7 +7,7 @@ require_once("inc/Utilities/Page.class.php");
 require_once("inc/Utilities/LoginManager.class.php");
 
 if(!empty($_POST)) {
-    CustomerDAO::$startDb();
+    CustomerDAO::startDb();
 
     $userName = $_POST["loginUser"];
     $password = $_POST["loginPassword"];

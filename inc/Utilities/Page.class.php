@@ -101,5 +101,62 @@ class Page{
         ';
         return $loginForm;   
     }
-
+    public static function formRegister(){
+        $formRegister = '
+        <section class="register-page">
+            <form class="row g-3" method="POST" action="'.$_SERVER["PHP_SELF"].'">
+                <div class="col-md-6">
+                    <label for="fName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="fName" id="fName" placeholder="Your Firstname">
+                </div>
+                <div class="col-md-6">
+                    <label for="lName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" name="lName" id="lName" placeholder="Your Lastname">
+                </div>
+                <div class="col-12">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Your Username">
+                </div>
+                <div class="col-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                </div>
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="Register" class="btn btn-primary">
+                </div>
+            </form>
+        </section>
+        ';
+        return $formRegister;
+    }
+    
+    public static function profileTable(array $currentUser){
+        $profileTable='
+        <section class="profile-page">
+        <table>
+            <tr>
+                <td>Username</td>
+                <td>'.$currentUser->getUsername().'</td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>'.$currentUser->getFName().'</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>'.$currentUser->getLName().'</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>'.$currentUser->getEmail().'</td>
+            </tr>
+        </table>
+        </section>
+        ';
+        return $profileTable;
+    }
 }

@@ -16,7 +16,7 @@ class LoginManager{
         } else{
             session_destroy();
             self::$login = false;
-            header("Location: login.php");
+            header("Location: Login.php");
     }
     return self::$login;
     }
