@@ -305,7 +305,7 @@ class Page{
                 </div>
                 <article>
                     <h2>'.$product->getGameName().'</h2>
-                    <h5>';
+                    <h5>Category |';
                     for($i = 0; $i<count($category);$i++){
 
                         $htmlStoreProduct .= ' - '. $category[$i]->getCategory();
