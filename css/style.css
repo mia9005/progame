@@ -58,7 +58,7 @@ body a {
         display: flex;
         justify-content: center;
         padding: 3%;
-    }`
+    }
     details a {
         color: var(--blackColor);
         font-size: 22px;
@@ -126,6 +126,30 @@ body a {
     }
     .register-page {
         background-color: var(--blackColor);
+    }
+    .profile-page {
+        background-color: var(--blackColor);
+        color: var(--whiteColor);
+        padding: 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5vh;
+    }
+    #profileTable td {
+        border: 2px solid var(--whiteColor);
+        width: 40vw;
+        height: 10vh;
+        text-align: center;      
+    }
+    #profileTable td:first-child{
+        background-color: var(--grayColor);
+    }
+
+    .profile-page > a {
+        color: var(--whiteColor);
+        letter-spacing: 2px;
+        text-decoration: underline;
     }
 
     footer {

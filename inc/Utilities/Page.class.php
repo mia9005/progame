@@ -10,7 +10,7 @@ class Page{
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="../css/style.css">
+            <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
             <title>PROGAME</title>
@@ -24,7 +24,7 @@ class Page{
         $htmlEnd = '
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
             </body>
-        </html>stat
+        </html>
         ';
         return $htmlEnd;
     }
@@ -137,7 +137,7 @@ class Page{
     public static function profileTable( Customer $currentUser){
         $profileTable='
         <section class="profile-page">
-        <table>
+        <table id="profileTable">
             <tr>
                 <td>Username</td>
                 <td>'.$currentUser->getUsername().'</td>
@@ -155,6 +155,7 @@ class Page{
                 <td>'.$currentUser->getEmail().'</td>
             </tr>
         </table>
+        <a href="Update.php">CHANGE</a>
         </section>
         ';
         return $profileTable;

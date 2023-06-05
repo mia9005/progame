@@ -23,7 +23,7 @@ if(!empty($_POST)) {
             $_SESSION["loginUser"] = $userExist;
 
             echo "Login Success";
-            header("Location: profile.php");
+            header("Location: Profile.php");
             exit();
         }
     }
