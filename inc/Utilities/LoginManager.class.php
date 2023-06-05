@@ -5,7 +5,7 @@ class LoginManager{
     private static $login;
 
     public static function verifyLogin() {
-        self::$login->false;
+        self::$login=false;
 
         if(!isset($_SESSION)) {
             session_start();

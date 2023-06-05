@@ -58,8 +58,7 @@ body a {
         display: flex;
         justify-content: center;
         padding: 3%;
-    }
-
+    }`
     details a {
         color: var(--blackColor);
         font-size: 22px;
@@ -125,7 +124,9 @@ body a {
         color: var(--whiteColor);
         text-decoration: underline;
     }
-
+    .register-page {
+        background-color: var(--blackColor);
+    }
 
     footer {
         background-color: var(--mainColor);

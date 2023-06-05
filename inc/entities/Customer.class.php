@@ -46,6 +46,8 @@ class Customer {
     }
 
     public function validateCustomer(string $userPass) : bool {
+        var_dump(password_hash($userPass,PASSWORD_DEFAULT));
+        var_dump($this->getPassword());
         if(password_verify($userPass, $this->getPassword())) {
             return true;
         } else {

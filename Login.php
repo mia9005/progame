@@ -8,13 +8,14 @@ require_once("inc/Utilities/LoginManager.class.php");
 
 if(!empty($_POST)) {
     CustomerDAO::startDb();
-
+    
     $userName = $_POST["loginUser"];
     $password = $_POST["loginPassword"];
-
+    
     $userExist = CustomerDAO::getCustomerByUsername($userName);
-
+    
     if((gettype($userExist) === "object") && (get_class($userExist) === 'Customer')) {
+        var_dump($password);
         if($userExist->validateCustomer($password)) {
             session_start();
 
@@ -22,7 +23,7 @@ if(!empty($_POST)) {
             $_SESSION["loginUser"] = $userExist;
 
             echo "Login Success";
-            // header("Location: profile.html");
+            header("Location: profile.php");
             exit();
         }
     }
