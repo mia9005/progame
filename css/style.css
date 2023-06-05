@@ -212,6 +212,16 @@ img {
         border-radius: 5px;
     }
 
+    .emptyMsg {
+        text-align: center;
+    }
+
+    .emptyMsg h2 {
+        color: var(--whiteColor);
+        font-weight: 600;
+        padding-top: 15vh;
+    }
+
     /* product page */
 
 

@@ -44,11 +44,17 @@ if( !empty($_GET) ){
     if(!empty($_GET['sortBy'])){
         $games->sortGame($_GET['sortBy']);
         echo Page::PageStoreCatalog($games->getGameList());
+        
     }else if(!empty($_GET['product'])){
         echo Page::PageProduct($games->getGameByName($_GET['product']));
     }
 }else{
-    echo Page::PageStoreCatalog($games->getGameList());
+    if($games->getTotalGames() == 0 ){
+        echo Page::PageStoreCatalog('');
+    }else{
+        echo Page::PageStoreCatalog($games->getGameList());
+
+    }
 }
 
 

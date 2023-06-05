@@ -34,13 +34,13 @@ class Page{
         <header>
             <section>
                 <h1>PROGAME</h1>
-                <a href="">Login</a>
+                <a href="Login.php">Login</a>
                 <details>
                     <summary class="fa-solid fa-bars"></summary>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Store</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="home.php">Home</a></li>
+                        <li><a href="store.php">Store</a></li>
+                        <li><a href="Login.php">Login</a></li>
                         <li><a href="#">Community</a></li>
                     </ul>
                 </details>
@@ -48,8 +48,8 @@ class Page{
         </header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="">Store</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="store.php">Store</a></li>
                 <li><a href="">Community</a></li>
             </ul>
         </nav>
@@ -78,24 +78,43 @@ class Page{
      * store gallery function printer
      * @return string
      */
-    public static function PageStoreCatalog( $productList ) : string {
+    public static function PageStoreCatalog( $productList) : string {
 
         $htmlStoreCatalog = '<div class="store-gallery">';
 
         $htmlStoreCatalog .= self::storeFilter();
-        $htmlStoreCatalog .= self::storeCatalog($productList);
+        if(is_array($productList)){
+            $htmlStoreCatalog .= self::storeCatalog($productList);
+            
+        }else{
+            $htmlStoreCatalog .= self::storeEmpty();
+
+        }
             
         $htmlStoreCatalog .='</div>';
 
         return $htmlStoreCatalog;
     }
 
+    public static function storeEmpty(){
+
+        $htmlEmpty ='
+            <section class="emptyMsg">
+                <h2>SORRY ANY PRODUCT FOUND </h2>
+            </section>
+        ';
+
+        return $htmlEmpty;
+    }
+
     public static function storeFilter(){
+        $brands = GameDAO::getAllUniqueBrands();
+        $categories = CategoryDAO::getAllUniqueCategories();
         $htmlStoreFilter = '
         <aside>
             <details>
                 <summary class="fa-solid fa-filter"></summary>
-                <form method="GET" action="'.$_SERVER["PHP_SELF"].'" class="form-300">
+                <form method="POST" action="'.$_SERVER["PHP_SELF"].'" class="form-300">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name"/>
                     <label for="price">Price</label>
@@ -105,26 +124,29 @@ class Page{
                         <option value="101_200">$101 - $200</option>
                         <option value="201_300">$201 - $300</option>
                         <option value="301_400">$301 - $400</option>
+                        <option value="401_500">$401 - $500</option>
                     </select>
                     <label for="releaseDate">Release Date</label>
                     <input type="date" name="releaseDate" id="releaseDate"/>
                     <label for="category">Category</label>
                     <select name="category" id="category">
-                        <option selected value="all">ALL</option>
-                        <option>Opt1</option>
-                        <option>Opt2</option>
-                        <option>Opt3</option>
+                        <option selected value="all">ALL</option>';
+                        foreach($categories as $category){
+                            $htmlStoreFilter .='<option value="'.$category->getCategory().'">'.$category->getCategory().'</option>';
+                        }
+
+                        $htmlStoreFilter .='
                     </select>
                     <label for="esbr">ESBR</label>
                     <select name="esbr" id="esbr">
                         <option selected value="all">All</option>
-                        <option value="1">Early Childhood</option>
-                        <option value="2">Everyone</option>
-                        <option value="3">Everyone 10+ Childhood</option>
-                        <option value="4">Teen</option>
-                        <option value="5">Mature 17+</option>
-                        <option value="6">Adults Only 18+</option>
-                        <option value="7">Ratin Pending</option>
+                        <option value="Early Childhood">Early Childhood</option>
+                        <option value="Everyone">Everyone</option>
+                        <option value="Everyone 10+ Childhood">Everyone 10+ Childhood</option>
+                        <option value="Teen">Teen</option>
+                        <option value="Mature 17+">Mature 17+</option>
+                        <option value="Adults Only 18+">Adults Only 18+</option>
+                        <option value="Ratin Pending">Ratin Pending</option>
                     </select>
                     <label for="maxPlayers">Max Players</label>
                     <select name="maxPlayers" id="maxPlayers">
@@ -136,10 +158,12 @@ class Page{
                     </select>
                     <label for="brand">Brand</label>
                     <select name="brand" id="brand">
-                        <option selected value="all">All</option>
-                        <option>Opt1</option>
-                        <option>Opt2</option>
-                        <option>Opt3</option>
+                        <option selected value="all">All</option>';
+                        foreach($brands as $brand){
+                            $htmlStoreFilter .='<option value="'.$brand->getBrand().'">'.$brand->getBrand().'</option>';
+                        }
+
+                        $htmlStoreFilter .='
                     </select>
                     <label for="complexity">Complexity</label>
                     <select name="complexity" id="complexity">
@@ -169,21 +193,23 @@ class Page{
                     <input type="date" name="releaseDate" id="releaseDate"/>
                     <label for="category">Category</label>
                     <select name="category" id="category">
-                        <option selected value="all">ALL</option>
-                        <option>Opt1</option>
-                        <option>Opt2</option>
-                        <option>Opt3</option>
+                        <option selected value="all">ALL</option>';
+                        foreach($categories as $category){
+                            $htmlStoreFilter .='<option value="'.$category->getCategory().'">'.$category->getCategory().'</option>';
+                        }
+
+                        $htmlStoreFilter .='
                     </select>
                     <label for="esbr">ESBR</label>
                     <select name="esbr" id="esbr">
                         <option selected value="all">All</option>
-                        <option value="1">Early Childhood</option>
-                        <option value="2">Everyone</option>
-                        <option value="3">Everyone 10+ Childhood</option>
-                        <option value="4">Teen</option>
-                        <option value="5">Mature 17+</option>
-                        <option value="6">Adults Only 18+</option>
-                        <option value="7">Ratin Pending</option>
+                        <option value="Early Childhood">Early Childhood</option>
+                        <option value="Everyone">Everyone</option>
+                        <option value="Everyone 10+ Childhood">Everyone 10+ Childhood</option>
+                        <option value="Teen">Teen</option>
+                        <option value="Mature 17+">Mature 17+</option>
+                        <option value="Adults Only 18+">Adults Only 18+</option>
+                        <option value="Ratin Pending">Ratin Pending</option>
                     </select>
                     <label for="maxPlayers">Max Players</label>
                     <select name="maxPlayers" id="maxPlayers">
@@ -195,10 +221,12 @@ class Page{
                     </select>
                     <label for="brand">Brand</label>
                     <select name="brand" id="brand">
-                        <option selected value="all">All</option>
-                        <option>Opt1</option>
-                        <option>Opt2</option>
-                        <option>Opt3</option>
+                        <option selected value="all">All</option>';
+                        foreach($brands as $brand){
+                            $htmlStoreFilter .='<option value="'.$brand->getBrand().'">'.$brand->getBrand().'</option>';
+                        }
+
+                        $htmlStoreFilter .='
                     </select>
                     <label for="complexity">Complexity</label>
                     <select name="complexity" id="complexity">

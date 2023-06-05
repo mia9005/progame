@@ -85,9 +85,18 @@ class GameDAO {
     }
 
     public static function filterProducts(array $filterList) {
-        $sql = 'SELECT * FROM game WHERE 1=1'; // Start with a base query that selects all records
-    
+
+        $sql = '';
+
         $params = array(); // Array to store the parameter values for binding
+
+        if ($filterList['category'] != 'all') {
+            $sql .= 'SELECT * FROM game INNER JOIN category ON game.gameId = category.gameId WHERE category.categoryName = :category';
+            $params[':category'] = $filterList['category'];
+        }else{
+
+            $sql = 'SELECT * FROM game WHERE 1=1'; // Start with a base query that selects all records
+        }       
     
         if ($filterList['price'] != 'all') {
             $sql .= ' AND price >= :price1 AND price <= :price2';
@@ -128,6 +137,17 @@ class GameDAO {
     
         self::$db->execute();
     
+        return self::$db->resultSet();
+    }
+
+    public static function getAllUniqueBrands(){
+
+        $sql = 'SELECT DISTINCT brand FROM game';
+
+        self::$db->query($sql);
+
+        self::$db->execute();
+
         return self::$db->resultSet();
     }
 }    
