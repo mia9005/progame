@@ -22,8 +22,13 @@ $result =[];
 if( !empty($_POST)){
     if(!empty($_POST['catalog_filter']))
     $result = GameDAO::filterProducts($_POST);
-    // var_dump($result);
+    $cookieValue = json_encode($_POST);
+    $cookieSearch = 'activeSearch';
+    setcookie($cookieSearch,$cookieValue, time() + (3600),"/" );
     
+}else if(!empty($_COOKIE['activeSearch'])){
+    $result = GameDAO::filterProducts(json_decode($_COOKIE['activeSearch'],true));
+
 }else{
     $result = GameDAO::selectAllProducts();
 }
