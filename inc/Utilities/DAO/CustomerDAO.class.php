@@ -47,7 +47,7 @@ class CustomerDAO {
 
         self::$db->query($sql);
 
-        self::$db->bind(":id",$currentId->getId());
+        self::$db->bind(":id",$current->getId());
 
         if(empty($changeInfo->getfName())){
             self::$db->bind(":fName",$current->getFName());
