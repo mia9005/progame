@@ -41,4 +41,21 @@ class CustomerDAO {
         self::$db->execute();
         return self::$db->lastInsertedId();
     }
+
+    public static function updateCustomer(Customer $changeInfo) {
+        $sql ="UPDATE customers SET fName=:fName, lName=:lName, username=:username, email=:email password=:password";
+
+        self::$db->query($sql);
+        self::$db->bind(":fName",$changeInfo->getFName());
+        self::$db->bind(":lName",$changeInfo->getLName());
+        self::$db->bind(":username",$changeInfo->getUsername());
+        self::$db->bind(":email",$changeInfo->getEmail());
+        self::$db->bind(":email",$changeInfo->getEmail());
+        self::$db->bind(":password",$changeInfo->getPassword());
+
+        self::$db->execute();
+
+        return self::$db->lastInsertedId();
+
+    }
 }
