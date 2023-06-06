@@ -22,8 +22,9 @@ if(!empty($_POST)) {
     $newInfo->setPassword($newPass);
 
     $customerExist = CustomerDAO::getCustomerByUsername($_POST['new-username']);
-    if(!$customerExist) {
-        CustomerDAO::updateCustomer($newInfo);
+
+    if(!$customerExist && ($currentUser->getPassword()===$_POST['new-password'])) {
+        CustomerDAO::updateCustomer($newInfo, $currentUser);
         unset($_POST);
     }
 }

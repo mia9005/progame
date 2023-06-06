@@ -42,15 +42,34 @@ class CustomerDAO {
         return self::$db->lastInsertedId();
     }
 
-    public static function updateCustomer(Customer $changeInfo) {
-        $sql ="UPDATE customers SET fName=:fName, lName=:lName, username=:username, email=:email password=:password";
+    public static function updateCustomer(Customer $changeInfo,$current) {
+        $sql ="UPDATE customers SET fName=:fName, lName=:lName, username=:username, email=:email, password=:password WHERE id=:id";
 
         self::$db->query($sql);
-        self::$db->bind(":fName",$changeInfo->getFName());
-        self::$db->bind(":lName",$changeInfo->getLName());
-        self::$db->bind(":username",$changeInfo->getUsername());
-        self::$db->bind(":email",$changeInfo->getEmail());
-        self::$db->bind(":email",$changeInfo->getEmail());
+
+        self::$db->bind(":id",$currentId->getId());
+
+        if(empty($changeInfo->getfName())){
+            self::$db->bind(":fName",$current->getFName());
+        } else {
+            self::$db->bind(":fName",$changeInfo->getFName());
+        }
+        if(empty($changeInfo->getLName())){
+            self::$db->bind(":lName",$current->getLName());
+        } else {
+            self::$db->bind(":lName",$changeInfo->getLName());
+        }
+        if(empty($changeInfo->getUsername())){
+            self::$db->bind(":username",$current->getUsername());
+        } else {
+            self::$db->bind(":username",$changeInfo->getUsername());
+        }
+        if(empty($changeInfo->getEmail())){
+            self::$db->bind(":email",$current->getEmail());
+        } else {
+            self::$db->bind(":email",$changeInfo->getEmail());
+        }
+        
         self::$db->bind(":password",$changeInfo->getPassword());
 
         self::$db->execute();

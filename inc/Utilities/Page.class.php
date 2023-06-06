@@ -34,13 +34,13 @@ class Page{
         <header>
             <section>
                 <h1>PROGAME</h1>
-                <a href="">Login</a>
+                <a href="Login.php">Login</a>
                 <details>
                     <summary class="fa-solid fa-bars"></summary>
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Store</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="Login.php">Login</a></li>
                         <li><a href="#">Community</a></li>
                     </ul>
                 </details>
@@ -95,7 +95,7 @@ class Page{
             </form>
             <aside>
                 <p>Do you want to create an account?</p>
-                <a href="">CREATE ACCOUNT</a>
+                <a href="Register.php">CREATE ACCOUNT</a>
             </aside>
         </section>
         ';
@@ -121,7 +121,7 @@ class Page{
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" name="password" id="password">
                 </div>
