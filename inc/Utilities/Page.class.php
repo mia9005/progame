@@ -155,9 +155,45 @@ class Page{
                 <td>'.$currentUser->getEmail().'</td>
             </tr>
         </table>
-        <a href="Update.php">CHANGE</a>
+        <aside>
+            <a href="Update.php">CHANGE</a>
+            <a href="Logout.php">LOG OUT</a>
+        </aside>
         </section>
         ';
         return $profileTable;
+    }
+
+    public static function formUpdate(Customer $currentUser){
+        $formUpdate = '
+        <section class="update-page">
+            <form class="row g-3" method="POST" action="'.$_SERVER["PHP_SELF"].'">
+                <div class="col-md-6">
+                    <label for="new-fName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="new-fName" id="new-fName" placeholder="'.$currentUser->getFName().'">
+                </div>
+                <div class="col-md-6">
+                    <label for="new-lName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" name="new-lName" id="new-lName" placeholder="'.$currentUser->getLName().'">
+                </div>
+                <div class="col-12">
+                    <label for="new-username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="new-username" id="new-username" placeholder="'.$currentUser->getUsername().'">
+                </div>
+                <div class="col-12">
+                    <label for="new-email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="new-email" id="new-email" placeholder="'.$currentUser->getEmail().'">
+                </div>
+                <div class="col-md-6">
+                    <label for="new-password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="new-password" id="new-password">
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="Change" class="btn btn-primary">
+                </div>
+            </form>
+        </section>
+        ';
+        return $formUpdate;
     }
 }

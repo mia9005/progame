@@ -22,7 +22,6 @@ if(!empty($_POST)) {
             $_SESSION["logged"] = true;
             $_SESSION["loginUser"] = $userExist;
 
-            echo "Login Success";
             header("Location: Profile.php");
             exit();
         }
