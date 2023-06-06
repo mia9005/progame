@@ -5,12 +5,12 @@ require_once("inc/entities/GameRepository.class.php");
 require_once("inc/entities/Test.class.php");
 require_once("inc/entities/Img.class.php");
 require_once("inc/entities/Category.class.php");
-require_once("inc/Utilities/FileManager.class.php");
-require_once("inc/Utilities/PDOService.class.php");
+require_once("inc/Ultilities/FileManager.class.php");
+require_once("inc/Ultilities/PDOService.class.php");
 require_once("inc/DAO/GameDAO.class.php");
 require_once("inc/DAO/ImgDAO.class.php");
 require_once("inc/DAO/CategoryDAO.class.php");
-require_once("inc/Utilities/Page.class.php");
+require_once("inc/Ultilities/Page.class.php");
 
 // $result = readCustonFile("./data/test_gallery.csv");
 GameDAO::startDb();
