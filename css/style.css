@@ -17,6 +17,10 @@ body a {
     text-decoration: none;
 }
 
+img {
+    width: 100%;
+}
+
 @media (min-width: 300px) {
     header {
         background-color: var(--mainColor);
@@ -93,6 +97,183 @@ body a {
     footer a {
         color: var(--blackColor);
     }
+
+    .store-gallery {
+        display: flex;
+        background-color: var(--blackColor);
+        padding: 3vh 0;
+    }
+
+    .form-300{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1vh;
+        background-color: var(--whiteColor);
+        right: 1%;
+        position: absolute;
+        width: 40%;
+        border-radius: 5px;
+        padding: 2vh;
+        box-shadow: 0 0 5px black;
+    }
+
+    form [type="submit"]{
+        padding: 1vh 2vh;
+        background-color: var(--mainColor);
+        font-weight: 600;
+        color: var(--whiteColor);
+        letter-spacing: 1px;
+        border: 1px solid var(--grayColor);
+        border-radius: 5px;
+    }
+
+    .form-300 select{
+        width: 50%;
+    }
+
+    /* .store-gallery aside form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1vh;
+    } */
+
+    .form-700,
+    .store-gallery aside > h2 {
+        display: none;
+    }
+
+
+
+    .store-gallery article {
+        display: flex;
+        width: 100%;
+    }
+    
+    .sort form {
+        z-index: 99;
+    }
+
+    .sort {
+        padding: 0 5vh;
+    }
+
+    .store-gallery article form {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .catalog {
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 2vh;
+        row-gap: 5vh;
+    }
+
+    .store-gallery section {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2vh;
+        width: 100%;
+        padding: 0 1vh;
+    }
+
+    .store-gallery a {
+        width: 18%;
+        min-width: 250px;
+        display: flex;
+    }
+
+    .store-gallery figure {
+        
+        background-color: white;
+        padding: 2vh;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2vh;
+        box-shadow: 0 0 5px black;
+    }
+
+    .store-gallery figcaption {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1vh;
+    }
+
+    .store-gallery button {
+        padding: 1vh;
+        background-color: lightblue;
+        border-radius: 5px;
+    }
+
+    .emptyMsg {
+        text-align: center;
+    }
+
+    .emptyMsg h2 {
+        color: var(--whiteColor);
+        font-weight: 600;
+        padding-top: 15vh;
+    }
+
+    /* product page */
+
+
+    .store-product > section {
+        display: flex;
+        justify-content: center;
+        column-gap: 5%;
+        background-color: var(--blackColor);
+        padding: 5vh 0;
+    }
+
+    .store-product figure {
+        width: 30%;
+        display: flex;
+    }
+
+    .store-product article {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 4vh;
+        color: var(--whiteColor);
+    }
+
+    .store-product span {
+        width: 30%;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .store-product ul {
+        width: 100%;
+    }
+
+    .store-product h5 {
+        width: 100%;
+    }
+    
+    .store-product li {
+        font-size: 18px;
+    }
+
+    .store-product h2 {
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .store-product article button {
+        width: 30%;
+        padding: 1vh;
+        border-radius: 5px;
+    }    
     /* main */
     .one h5 {
         font-size: 40px;
@@ -273,5 +454,32 @@ body a {
 
     footer {
         font-size: 20px;
+    }
+
+    .store-gallery aside {
+        display: block;
+        background-color: var(--whiteColor);
+        border-radius: 5px;
+        padding: 1vh;
+        width: 15%;
+    }
+
+    .sort {
+        justify-content: right;
+    }
+
+    .form-700,
+    .store-gallery aside > h2{
+        display: flex;
+        flex-direction: column;
+        row-gap: 1vh;
+    }
+
+    .store-gallery section {
+        width: 85%;
+    }
+
+    .store-gallery a {
+        min-width: 200px;
     }
 }
