@@ -21,6 +21,7 @@ if(!empty($_POST)) {
     $newPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $newCustomer->setPassword($newPass);
     $customerExist = CustomerDAO::getCustomerByUsername($_POST['username']);
+    
     if(!$customerExist) {
         CustomerDAO::insertCustomer($newCustomer);
         unset($_POST);
