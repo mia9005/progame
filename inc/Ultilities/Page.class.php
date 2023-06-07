@@ -34,13 +34,13 @@ class Page{
         <header>
             <section>
                 <h1>PROGAME</h1>
-                <a href="">Login</a>
+                <a href="login.php">Login</a>
                 <details>
                     <summary class="fa-solid fa-bars"></summary>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Store</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="store.php">Store</a></li>
+                        <li><a href="login.php">Login</a></li>
                         <li><a href="#">Community</a></li>
                     </ul>
                 </details>
@@ -48,8 +48,8 @@ class Page{
         </header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="">Store</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="store.php">Store</a></li>
                 <li><a href="">Community</a></li>
             </ul>
         </nav>

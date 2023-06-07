@@ -321,13 +321,13 @@ img {
         justify-content: center;
         column-gap: 1vh;
     }
-    figure { 
+    .gallery > figure { 
         padding: 5%;
     }
-    img {
+    .gallery img {
         width: 100%;
     }
-    figcaption {
+    .gallery figcaption {
         text-align: center;
         font-size: 30px;
     }
