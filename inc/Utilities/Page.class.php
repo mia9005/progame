@@ -438,4 +438,147 @@ class Page{
 
         return $htmlStoreProduct;
     }
+    
+    public static function loginForm() {
+        $loginForm='
+        <section class="login-page">
+            <form action="'.$_SERVER["PHP_SELF"].'" method="POST">
+                <aside> 
+                    <div class="row mb-3">
+                        <label for="loginUser" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="loginUser" id="loginUser">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="loginPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                        <input type="password" class="form-control" name="loginPassword" id="loginPassword">
+                        </div>
+                    </div>
+                </aside>
+                <input type="submit" id="login-page-submit" value="Sign in" class="btn btn-primary">            
+            </form>
+            <aside>
+                <p>Do you want to create an account?</p>
+                <a href="Register.php">CREATE ACCOUNT</a>
+            </aside>
+        </section>
+        ';
+        return $loginForm;   
+    }
+    public static function formRegister(){
+        $formRegister = '
+        <section class="register-page">
+            <form class="row g-3" method="POST" action="'.$_SERVER["PHP_SELF"].'">
+                <div class="col-md-6">
+                    <label for="fName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="fName" id="fName" placeholder="Your Firstname">
+                </div>
+                <div class="col-md-6">
+                    <label for="lName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" name="lName" id="lName" placeholder="Your Lastname">
+                </div>
+                <div class="col-12">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Your Username">
+                </div>
+                <div class="col-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                </div>
+                <div class="col-md-12">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="Register" class="btn btn-primary">
+                </div>
+            </form>
+        </section>
+        ';
+        return $formRegister;
+    }
+    
+    public static function profileTable( Customer $currentUser){
+        $profileTable='
+        <section class="profile-page">
+        <table id="profileTable">
+            <tr>
+                <td>Username</td>
+                <td>'.$currentUser->getUsername().'</td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>'.$currentUser->getFName().'</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>'.$currentUser->getLName().'</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>'.$currentUser->getEmail().'</td>
+            </tr>
+        </table>
+        <aside>
+            <a href="Update.php">CHANGE</a>
+            <a href="Logout.php">LOG OUT</a>
+        </aside>
+        </section>
+        ';
+        return $profileTable;
+    }
+
+    public static function formUpdate(Customer $currentUser){
+        $formUpdate = '
+        <section class="update-page">
+            <form class="row g-3" method="POST" action="'.$_SERVER["PHP_SELF"].'">
+                <div class="col-md-6">
+                    <label for="new-fName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="new-fName" id="new-fName" placeholder="'.$currentUser->getFName().'">
+                </div>
+                <div class="col-md-6">
+                    <label for="new-lName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" name="new-lName" id="new-lName" placeholder="'.$currentUser->getLName().'">
+                </div>
+                <div class="col-12">
+                    <label for="new-username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="new-username" id="new-username" placeholder="'.$currentUser->getUsername().'">
+                </div>
+                <div class="col-12">
+                    <label for="new-email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="new-email" id="new-email" placeholder="'.$currentUser->getEmail().'">
+                </div>
+                <div class="col-md-6">
+                    <label for="new-password" class="form-label">Current Password</label>
+                    <input type="password" class="form-control" name="new-password" id="new-password">
+                </div>
+                <div class="col-12">
+                    <input type="submit" value="Change" class="btn btn-primary">
+                </div>
+            </form>
+        </section>
+        ';
+        return $formUpdate;
+    }
+
+    public static function successMessage() {
+        $successMessage='
+        <div class="alert alert-info" role="alert">
+        Welcome! Enjoy with us!
+        </div>  
+        ';
+        return $successMessage;
+    }
+
+    public static function errorMessage() {
+        $errorMessage='
+        <div class="alert alert-danger" role="alert">
+        Incorrect Password. Check your password please.
+        </div>
+        ';
+        return $errorMessage;
+    }
+
 }
