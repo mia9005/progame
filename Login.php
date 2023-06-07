@@ -24,7 +24,7 @@ if(!empty($_POST)) {
             header("Location: Profile.php");
             exit();
         } else {
-            echo Page::ErrorMessage();
+            echo Page::errorMessage();
         }
     }
 }

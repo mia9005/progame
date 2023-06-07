@@ -197,16 +197,21 @@ class Page{
         return $formUpdate;
     }
 
-    public static function SuccessMessage() {
-        
+    public static function successMessage() {
+        $successMessage='
+        <div class="alert alert-info" role="alert">
+        Welcome! Enjoy with us!
+        </div>  
+        ';
+        return $successMessage;
     }
 
-    public static function ErrorMessage() {
-        $ErrorMessage='
+    public static function errorMessage() {
+        $errorMessage='
         <div class="alert alert-danger" role="alert">
         Incorrect Password. Check your password please.
         </div>
         ';
-        return $ErrorMessage;
+        return $errorMessage;
     }
 }

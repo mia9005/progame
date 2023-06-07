@@ -24,6 +24,7 @@ if(!empty($_POST)) {
     if(!$customerExist) {
         CustomerDAO::insertCustomer($newCustomer);
         unset($_POST);
+        echo Page::successMessage();
     }
 }
 
