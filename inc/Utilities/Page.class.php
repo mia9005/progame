@@ -185,7 +185,7 @@ class Page{
                     <input type="email" class="form-control" name="new-email" id="new-email" placeholder="'.$currentUser->getEmail().'">
                 </div>
                 <div class="col-md-6">
-                    <label for="new-password" class="form-label">Password</label>
+                    <label for="new-password" class="form-label">Current Password</label>
                     <input type="password" class="form-control" name="new-password" id="new-password">
                 </div>
                 <div class="col-12">
@@ -195,5 +195,18 @@ class Page{
         </section>
         ';
         return $formUpdate;
+    }
+
+    public static function SuccessMessage() {
+        
+    }
+
+    public static function ErrorMessage() {
+        $ErrorMessage='
+        <div class="alert alert-danger" role="alert">
+        Incorrect Password. Check your password please.
+        </div>
+        ';
+        return $ErrorMessage;
     }
 }

@@ -25,6 +25,8 @@ if(!empty($_POST)) {
     if($currentUser->validateCustomer($_POST['new-password'])) {
         CustomerDAO::updateCustomer($newInfo, $currentUser);
         unset($_POST);
+    } else {
+        echo Page::ErrorMessage();
     }
 }
 

@@ -15,7 +15,6 @@ if(!empty($_POST)) {
     $userExist = CustomerDAO::getCustomerByUsername($userName);
     
     if((gettype($userExist) === "object") && (get_class($userExist) === 'Customer')) {
-        var_dump($password);
         if($userExist->validateCustomer($password)) {
             session_start();
 
@@ -24,6 +23,8 @@ if(!empty($_POST)) {
 
             header("Location: Profile.php");
             exit();
+        } else {
+            echo Page::ErrorMessage();
         }
     }
 }
