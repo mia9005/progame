@@ -41,6 +41,8 @@ foreach($result as $game){
 $games = new GameRepository();
 $games->setGameList($gameList);
 $img = ImgDAO::getAllImages();
+$brands = GameDAO::getAllUniqueBrands();
+$categories = CategoryDAO::getAllUniqueCategories();
 
 echo Page::PageHead();
 echo Page::PageHeader();
@@ -48,16 +50,19 @@ echo Page::PageHeader();
 if( !empty($_GET) ){
     if(!empty($_GET['sortBy'])){
         $games->sortGame($_GET['sortBy']);
-        echo Page::PageStoreCatalog($games->getGameList());
+        echo Page::PageStoreCatalog($games->getGameList(),$brands,$categories);
         
     }else if(!empty($_GET['product'])){
-        echo Page::PageProduct($games->getGameByName($_GET['product']));
+        $gameSelected = $games->getGameByName($_GET['product']);
+        $imgs = ImgDAO::getImagesById($gameSelected->getGameId());
+        $category = CategoryDAO::getCategoryById($gameSelected->getGameId());
+        echo Page::PageProduct($gameSelected,$imgs,$category);
     }
 }else{
     if($games->getTotalGames() == 0 ){
         echo Page::PageStoreCatalog('');
     }else{
-        echo Page::PageStoreCatalog($games->getGameList());
+        echo Page::PageStoreCatalog($games->getGameList(),$brands,$categories);
 
     }
 }

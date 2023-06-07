@@ -162,11 +162,11 @@ class Page{
      * store gallery function printer
      * @return string
      */
-    public static function PageStoreCatalog( $productList) : string {
+    public static function PageStoreCatalog( $productList,$brands,$categories ) : string {
 
         $htmlStoreCatalog = '<div class="store-gallery">';
 
-        $htmlStoreCatalog .= self::storeFilter();
+        $htmlStoreCatalog .= self::storeFilter( $brands,$categories );
         if(is_array($productList)){
             $htmlStoreCatalog .= self::storeCatalog($productList);
             
@@ -191,9 +191,7 @@ class Page{
         return $htmlEmpty;
     }
 
-    public static function storeFilter(){
-        $brands = GameDAO::getAllUniqueBrands();
-        $categories = CategoryDAO::getAllUniqueCategories();
+    public static function storeFilter( $brands,$categories ){
         $htmlStoreFilter = '
         <aside>
             <details>
@@ -373,10 +371,7 @@ class Page{
      * store product function printer
      * @return string
      */
-    public static function PageProduct( $product ) : string {
-        $id = $product->getGameId();
-        $imgs = ImgDAO::getImagesById($id);
-        $category = CategoryDAO::getCategoryById($id);
+    public static function PageProduct( $product ,$imgs,$category ) : string {
         $row = "";
         $htmlStoreProduct = '
         <div class="store-product">
