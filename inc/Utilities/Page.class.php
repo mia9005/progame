@@ -499,34 +499,100 @@ class Page{
     }
 
     private static function profileTable($currentUser){
+
+        $userEvents = EventDAO::getEventByUserId($currentUser->getId());
+
         $htmlTable='
         <section class="profile-page">
-            <table id="profileTable">
-                <tr>
-                    <td>Username</td>
-                    <td>'.$currentUser->getUsername().'</td>
-                </tr>
-                <tr>
-                    <td>First Name</td>
-                    <td>'.$currentUser->getFName().'</td>
-                </tr>
-                <tr>
-                    <td>Last Name</td>
-                    <td>'.$currentUser->getLName().'</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>'.$currentUser->getEmail().'</td>
-                </tr>
-            </table>
             <aside>
                 <a href="Update.php">CHANGE</a>
                 <a href="Logout.php">LOG OUT</a>
             </aside> 
+            <div>
+                <table id="profileTable">
+                    <tr>
+                        <td>Username</td>
+                        <td>'.$currentUser->getUsername().'</td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td>'.$currentUser->getFName().'</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>'.$currentUser->getLName().'</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>'.$currentUser->getEmail().'</td>
+                    </tr>
+                </table>
+                <aside>'.
+                    self::includeNewEvent($currentUser->getId()).
+                    self::buildEventsList($userEvents)    
+                .'</aside>
+            </div>
         </section>
         ';
 
         return $htmlTable;
+    }
+
+    public static function successAlert(string $message) {
+        $alert = '
+        <div class="alert alert-success" role="alert">'.
+            $message  
+        .'</div>      
+        ';
+        return $alert;
+    }
+
+    private static function includeNewEvent(int $userId) {
+        $newEventForm = '
+        <form action="'.$_SERVER['PHP_SELF'].'" method="POST" class="event-form">
+            <input type="date" name="eventDate">
+            <input type="text" name="title" placeholder="Event Title">
+            <textarea name="details" placeholder="Any details or comments"></textarea>
+            <input type="hidden" name="userId" value="'.$userId.'">
+            <input type="submit" value="Create new Event">
+        </form>
+        ';
+
+        return $newEventForm;
+    }
+
+    private static function buildEventsList($events) {
+
+        $accordion = '
+        <div class="accordion accordion-flush accordion-event-list" id="accordionFlushExample">
+        ';
+        $eventList = '
+            <ul>';
+        foreach($events as $event) {
+            $accordion .= '
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    '.$event->getTitle().'
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                    '.$event->getEventDate().' - '.$event->getDetails().'
+                    </div>
+                </div>
+            </div>
+            
+            ';
+            $eventList .= '<li><a href="?event='.$event->getEventId().'"></a></li>';
+        }
+        $eventList .= '
+            </ul>
+        ';
+
+        $accordion .= '</div>';
+
+        return $accordion;
     }
 
     public static function formUpdate(Customer $currentUser){
