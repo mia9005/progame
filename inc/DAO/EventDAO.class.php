@@ -18,8 +18,8 @@ class EventDAO {
     }
 
     public static function getEventByUserId( int $userId ){
-        // $sql = "SELECT * FROM storeevent WHERE userId =:userId";
-        $sql = "SELECT * FROM storeevent WHERE customerId =:userId";
+        $sql = "SELECT * FROM storeevent WHERE userId =:userId";
+        // $sql = "SELECT * FROM storeevent WHERE customeId =:userId";
 
         self::$db->query($sql);
         self::$db->bind(":userId", $userId);
@@ -29,8 +29,8 @@ class EventDAO {
     }
 
     public static function insetNewEvent(StoreEvent $newEvent) {
-        // $sql = "INSERT INTO storeevent (userId, title, eventDate, details) VALUES (:userId, :title,:eventDate,:details)";
-        $sql = "INSERT INTO storeevent (customerId, title, eventDate, details) VALUES (:userId, :title,:eventDate,:details)";
+        $sql = "INSERT INTO storeevent (userId, title, eventDate, details) VALUES (:userId, :title,:eventDate,:details)";
+        // $sql = "INSERT INTO storeevent (customerId, title, eventDate, details) VALUES (:userId, :title,:eventDate,:details)";
 
         self::$db->query($sql);
         self::$db->bind(":userId",$newEvent->getUserId());
