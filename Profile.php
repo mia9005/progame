@@ -17,7 +17,7 @@ $currentUser=$_SESSION["loginUser"];
 echo Page::PageHead();
 echo Page::PageHeader();
 
-echo Page::profileTable($currentUser);
+echo Page::profilePage($currentUser);
 
 echo Page::PageFooter();
 echo Page::PageEnd();
