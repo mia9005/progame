@@ -66,7 +66,7 @@ class Page{
         return $htmlFooter;
     }
 
-    public static function PageHome(){
+    public static function PageHome($product){
         $htmlHome = '
         <main>
             <section class="one">
@@ -109,37 +109,37 @@ class Page{
                 <aside>
                     <h2>Most Popular</h2>
                     <p>Here is the most popular games among players</p>
-                </aside>
-                <section class="gallery">
-                    <figure>
-                        <img src="/img/home-gallery/game-01.jpg" alt="game-01">
-                        <figcaption>
-                            <small>game name</small>
-                        </figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/img/home-gallery/game-02.jpg" alt="game-02">
-                        <figcaption>
-                            <small>game name</small>
-                        </figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/img/home-gallery/game-03.jpg" alt="game-03">
-                        <figcaption>
-                            <small>game name</small>
-                        </figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/img/home-gallery/game-04.jpg" alt="game-04">
-                        <figcaption>
-                            <small>game name</small>
-                        </figcaption>
-                    </figure>
-                </section>
-            </section>
+                </aside>';
+            $htmlHome .=self::galleryMostPopular($product);
+            $htmlHome .='
         </main>
         ';
         return $htmlHome;
+    }
+
+    public static function galleryMostPopular(array $product) {
+        $galleryMostPopular='
+        <section class="gallery">
+        ';
+        for($i=0; $i<4; $i++) {
+            $id = $product[$i]->getGameId();
+            $name = $product[$i]->getGameName();
+            $img = ImgDao::getImagesById($id);
+            $galleryMostPopular .='
+            <figure>
+                <a href="store.php?product='.$name.'">
+                    <img src="'.$img[0]->getImgLink().'" alt="game-'.$name.'">
+                    <figcaption>
+                        <small>'.$name.'</small>
+                    </figcaption>
+                </a>
+            </figure>
+            ';
+        }
+        $galleryMostPopular .='
+        </section>
+        ';
+        return $galleryMostPopular;
     }
 
     public static function PageMain(){
