@@ -74,25 +74,17 @@ class Page{
                     <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/img/home-carousel/monopoly.jpg" class="d-block w-100" alt="monopoly">
+                        <img src="https://images.pexels.com/photos/4792379/pexels-photo-4792379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="monopoly">
                         <div class="carousel-caption d-none d-md-block">
                         <h5>New Game Release</h5>
                         <p>Get your hands on the hottest new release!</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/home-carousel/Review.jpg" class="d-block w-100" alt="review">
-                        <div class="carousel-caption d-none d-md-block">
-                        <h5>Latest Review</h5>
-                        <p>Get information and strategy with other players!</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/img/home-carousel/community.jpg" class="d-block w-100" alt="community">
+                        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="community">
                         <div class="carousel-caption d-none d-md-block">
                         <h5>Connect with people</h5>
                         <p>Make team! Enjoy game together!</p>
