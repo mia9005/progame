@@ -90,7 +90,7 @@ class GameDAO {
 
         $params = array(); // Array to store the parameter values for binding
 
-        if ($filterList['category'] != 'all') {
+        if ($filterList['category'] !== 'all') {
             $sql .= 'SELECT * FROM game INNER JOIN category ON game.gameId = category.gameId WHERE category.categoryName = :category';
             $params[':category'] = $filterList['category'];
         }else{
@@ -98,7 +98,7 @@ class GameDAO {
             $sql = 'SELECT * FROM game WHERE 1=1'; // Start with a base query that selects all records
         }       
     
-        if ($filterList['price'] != 'all') {
+        if ($filterList['price'] !== 'all') {
             $sql .= ' AND price >= :price1 AND price <= :price2';
             $price = explode("_", $filterList['price']);
             $params[':price1'] = $price[0];
@@ -112,19 +112,19 @@ class GameDAO {
             $sql .= ' AND gameName LIKE :name';
             $params[':name'] = '%' . $filterList['name'] . '%';
         }
-        if ($filterList['esbr'] != 'all') {
+        if ($filterList['esbr'] !== 'all') {
             $sql .= ' AND esbr = :esbr';
             $params[':esbr'] = $filterList['esbr'];
         }
-        if ($filterList['maxPlayers'] != 'all') {
+        if ($filterList['maxPlayers'] !== 'all') {
             $sql .= ' AND maxPlayers = :maxPlayers';
             $params[':maxPlayers'] = $filterList['maxPlayers'];
         }
-        if ($filterList['brand'] != 'all') {
+        if ($filterList['brand'] !== 'all') {
             $sql .= ' AND brand = :brand';
             $params[':brand'] = $filterList['brand'];
         }
-        if ($filterList['complexity'] != 'all') {
+        if ($filterList['complexity'] !== 'all') {
             $sql .= ' AND complexity = :complexity';
             $params[':complexity'] = $filterList['complexity'];
         }

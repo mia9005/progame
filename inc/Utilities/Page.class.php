@@ -154,11 +154,11 @@ class Page{
      * store gallery function printer
      * @return string
      */
-    public static function PageStoreCatalog( $productList) : string {
+    public static function PageStoreCatalog( $productList,$brands,$categories ) : string {
 
         $htmlStoreCatalog = '<div class="store-gallery">';
 
-        $htmlStoreCatalog .= self::storeFilter();
+        $htmlStoreCatalog .= self::storeFilter( $brands,$categories );
         if(is_array($productList)){
             $htmlStoreCatalog .= self::storeCatalog($productList);
             
@@ -183,9 +183,7 @@ class Page{
         return $htmlEmpty;
     }
 
-    public static function storeFilter(){
-        $brands = GameDAO::getAllUniqueBrands();
-        $categories = CategoryDAO::getAllUniqueCategories();
+    public static function storeFilter( $brands,$categories ){
         $htmlStoreFilter = '
         <aside>
             <details>
@@ -365,10 +363,7 @@ class Page{
      * store product function printer
      * @return string
      */
-    public static function PageProduct( $product ) : string {
-        $id = $product->getGameId();
-        $imgs = ImgDAO::getImagesById($id);
-        $category = CategoryDAO::getCategoryById($id);
+    public static function PageProduct( $product ,$imgs,$category ) : string {
         $row = "";
         $htmlStoreProduct = '
         <div class="store-product">
@@ -492,34 +487,46 @@ class Page{
         return $formRegister;
     }
     
-    public static function profileTable( Customer $currentUser){
-        $profileTable='
+    public static function profilePage( Customer $currentUser){
+        $profilePage='
+        <secion class = "profile-container">';
+
+        $profilePage .= self::profileTable($currentUser);
+
+        $profilePage.='</secion>        
+        ';
+        return $profilePage;
+    }
+
+    private static function profileTable($currentUser){
+        $htmlTable='
         <section class="profile-page">
-        <table id="profileTable">
-            <tr>
-                <td>Username</td>
-                <td>'.$currentUser->getUsername().'</td>
-            </tr>
-            <tr>
-                <td>First Name</td>
-                <td>'.$currentUser->getFName().'</td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>'.$currentUser->getLName().'</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>'.$currentUser->getEmail().'</td>
-            </tr>
-        </table>
-        <aside>
-            <a href="Update.php">CHANGE</a>
-            <a href="Logout.php">LOG OUT</a>
-        </aside>
+            <table id="profileTable">
+                <tr>
+                    <td>Username</td>
+                    <td>'.$currentUser->getUsername().'</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>'.$currentUser->getFName().'</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>'.$currentUser->getLName().'</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>'.$currentUser->getEmail().'</td>
+                </tr>
+            </table>
+            <aside>
+                <a href="Update.php">CHANGE</a>
+                <a href="Logout.php">LOG OUT</a>
+            </aside> 
         </section>
         ';
-        return $profileTable;
+
+        return $htmlTable;
     }
 
     public static function formUpdate(Customer $currentUser){

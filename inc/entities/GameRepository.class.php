@@ -51,4 +51,20 @@ class GameRepository {
         }
     }
 
+    public function setGamesCatalogByPage(array $newCatalog) {
+        $count = 1;
+        for($i = 0; $i < count($newCatalog); $i+=25) {
+            
+            for ($j = $i; $j < ($i + 25); $j++) {
+                if ( $j > count($newCatalog)-1 ) {
+                    break;
+                }
+                $this->gameList[($count)][] = $newCatalog[$j];
+            }
+           $count++;
+        }
+
+        return $this->gameList;
+    }
+
 }
