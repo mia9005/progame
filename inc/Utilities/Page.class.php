@@ -122,8 +122,8 @@ class Page{
         <section class="gallery">
         ';
         for($i=0; $i<4; $i++) {
-            $id = $product->getGameId();
-            $name = $product->getGameName();
+            $id = $product[$i]->getGameId();
+            $name = $product[$i]->getGameName();
             $img = ImgDao::getImagesById($id);
             $galleryMostPopular .='
             <figure>
@@ -135,11 +135,11 @@ class Page{
                 </a>
             </figure>
             ';
-            $galleryMostPopular .='
-            </section>
-            ';
-            return $galleryMostPopular;
         }
+        $galleryMostPopular .='
+        </section>
+        ';
+        return $galleryMostPopular;
     }
 
     public static function PageMain(){
