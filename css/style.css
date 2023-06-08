@@ -603,5 +603,9 @@ img {
 
     .store-gallery a {
         min-width: 200px;
+  
+    }
+    .carousel-item {
+        border: 2px solid red;
     }
 }
